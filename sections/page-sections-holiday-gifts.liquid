@@ -1,0 +1,444 @@
+{% if section.settings.page_title_enable or section.settings.page_content_enable %}
+  <div class="page-width page-content{% if section.blocks.size > 0 %} page-content--with-blocks{% endif %}">
+    {% include 'breadcrumbs' %}
+
+    <div class="grid">
+      <div class="grid__item medium-up--three-quarters medium-up--push-one-eighth">
+
+        {% if section.settings.page_title_enable %}
+          <header class="section-header">
+            <h1 class="section-header__title">{{ page.title }}</h1>
+          </header>
+        {% endif %}
+
+        {% if section.settings.page_content_enable %}
+          <div class="rte text-spacing">
+            {{ page.content }}
+          </div>
+        {% endif %}
+
+      </div>
+    </div>
+  </div>
+{% endif %}
+
+<div class="page-width holiday-gift-guide">
+  {% for block in section.blocks %}
+    <div {{ block.shopify_attributes }}>
+      {% case block.type %}
+
+        {% when 'row-5-promos' %}
+          <div class="holiday-gift-guide-row-1 flex-grid">
+            <div class="flex-grid__item--66">
+              <div class="hgg-col-1">
+                {% if block.settings.img_row_5_promos_1 != blank %}
+                  
+                      <div class="hgg-item">
+                        {%- if block.settings.row_5_promos_link_1 != blank -%}<a href="{{ block.settings.row_5_promos_link_1 }}" class="hgg-wrap-link">{% endif %}
+                          <img src="{{ block.settings.img_row_5_promos_1 | img_url: '1100x', format: 'pjpg' }}" data-widths="[500, 800, 1200]" data-sizes="auto" alt="" class="hgg-item-img" alt="{{ block.settings.alt_row_5_promos_1 }}">
+                        {%- if block.settings.row_5_promos_link_1 != blank -%}</a>{% endif %}
+                		<div class="hgg-item-content">
+                          <h2>{{ block.settings.row_5_promos_hdr_text_1 }}</h2>
+                          <a href="{{ block.settings.row_5_promos_link_1 }}" class="btn">{{ block.settings.row_5_promos_link_text_1 }}</a>
+                        </div>
+                      </div>
+                  
+                {% endif %}
+                
+                {% if block.settings.img_row_5_promos_2 != blank %}
+                  
+                      <div class="hgg-item">
+                        {%- if block.settings.row_5_promos_link_2 != blank -%}<a href="{{ block.settings.row_5_promos_link_2 }}" class="hgg-wrap-link">{% endif %}
+                          <img src="{{ block.settings.img_row_5_promos_2 | img_url: '1100x', format: 'pjpg' }}" data-widths="[500, 800, 1260]" data-sizes="auto" alt="" class="hgg-item-img" alt="{{ block.settings.alt_row_5_promos_2 }}">
+                        {%- if block.settings.row_5_promos_link_2 != blank -%}</a>{% endif %}
+                        <div class="hgg-item-content">
+                          <h2>{{ block.settings.row_5_promos_hdr_text_2 }}</h2>
+                          <a href="{{ block.settings.row_5_promos_link_2 }}" class="btn">{{ block.settings.row_5_promos_link_text_2 }}</a>
+                        </div>
+                      </div>
+                  
+                {% endif %}
+                
+
+              </div>
+            </div>
+            <div class="flex-grid__item--33">
+              <div class="hgg-col-2">
+                {% if block.settings.img_row_5_promos_3 != blank %}
+                  
+                      <div class="hgg-item">
+                        {%- if block.settings.row_5_promos_link_3 != blank -%}<a href="{{ block.settings.row_5_promos_link_3 }}" class="hgg-wrap-link">{% endif %}
+                          <img src="{{ block.settings.img_row_5_promos_3 | img_url: '600x', format: 'pjpg' }}" data-widths="[500, 800, 1260]" data-sizes="auto" alt="" class="hgg-item-img" alt="{{ block.settings.alt_row_5_promos_3 }}">
+                        {%- if block.settings.row_5_promos_link_3 != blank -%}</a>{% endif %}
+                        <div class="hgg-item-content">
+                          <h2>{{ block.settings.row_5_promos_hdr_text_3 }}</h2>
+                          <a href="{{ block.settings.row_5_promos_link_3 }}" class="btn">{{ block.settings.row_5_promos_link_text_3 }}</a>
+                        </div>
+                      </div>
+                  
+                {% endif %}
+                
+                {% if block.settings.img_row_5_promos_4 != blank %}
+                  
+                      <div class="hgg-item">
+                        {%- if block.settings.row_5_promos_link_4 != blank -%}<a href="{{ block.settings.row_5_promos_link_4 }}" class="hgg-wrap-link">{% endif %}
+                          <img src="{{ block.settings.img_row_5_promos_4 | img_url: '600x', format: 'pjpg' }}" data-widths="[500, 800, 1260]" data-sizes="auto" alt="" class="hgg-item-img" alt="{{ block.settings.alt_row_5_promos_4 }}">
+                        {%- if block.settings.row_5_promos_link_4 != blank -%}</a>{% endif %}
+                        <div class="hgg-item-content">
+                          <h2>{{ block.settings.row_5_promos_hdr_text_4 }}</h2>
+                          <a href="{{ block.settings.row_5_promos_link_4 }}" class="btn">{{ block.settings.row_5_promos_link_text_4 }}</a>
+                        </div>
+                      </div>
+                  
+                {% endif %}
+                
+                {% if block.settings.img_row_5_promos_5 != blank %}
+                  
+                      <div class="hgg-item">
+                        {%- if block.settings.row_5_promos_link_5 != blank -%}<a href="{{ block.settings.row_5_promos_link_5 }}" class="hgg-wrap-link">{% endif %}
+                          <img src="{{ block.settings.img_row_5_promos_5 | img_url: '600x', format: 'pjpg' }}" data-widths="[500, 800, 1260]" data-sizes="auto" alt="" class="hgg-item-img" alt="{{ block.settings.alt_row_5_promos_5 }}">
+                        {%- if block.settings.row_5_promos_link_5 != blank -%}</a>{% endif %}
+                        <div class="hgg-item-content">
+                          <h2>{{ block.settings.row_5_promos_hdr_text_5 }}</h2>
+                          <a href="{{ block.settings.row_5_promos_link_5 }}" class="btn">{{ block.settings.row_5_promos_link_text_5 }}</a>
+                        </div>
+                      </div>
+                  
+                {% endif %}
+
+              </div>
+            </div>
+          </div>
+      
+      {% when 'row-2-promos' %}
+          <div class="holiday-gift-guide-row-2 flex-grid">
+            <div class="flex-grid__item--50">
+              <div class="hgg-col-1">
+                {% if block.settings.img_row_2_promos_1 != blank %}
+                  
+                      <div class="hgg-item">
+                        {%- if block.settings.row_2_promos_link_1 != blank -%}<a href="{{ block.settings.row_2_promos_link_1 }}" class="hgg-wrap-link">{% endif %}
+                          <img src="{{ block.settings.img_row_2_promos_1 | img_url: '900x', format: 'pjpg' }}" data-widths="[500, 800, 1260]" data-sizes="auto" alt="" class="hgg-item-img" alt="{{ block.settings.alt_row_2_promos_1 }}">
+                        {%- if block.settings.row_2_promos_link_1 != blank -%}</a>{% endif %}
+                        <div class="hgg-item-content">
+                          <h2>{{ block.settings.row_2_promos_hdr_text_1 }}</h2>
+                          <a href="{{ block.settings.row_2_promos_link_1 }}" class="btn">{{ block.settings.row_2_promos_link_text_1 }}</a>
+                        </div>
+                      </div>
+                  
+                {% endif %}
+                
+              </div>
+            </div>
+            <div class="flex-grid__item--50">
+              <div class="hgg-col-2">
+                {% if block.settings.img_row_2_promos_2 != blank %}
+                  
+                      <div class="hgg-item">
+                        {%- if block.settings.row_2_promos_link_2 != blank -%}<a href="{{ block.settings.row_2_promos_link_2 }}" class="hgg-wrap-link">{% endif %}
+                          <img src="{{ block.settings.img_row_2_promos_2 | img_url: '900x', format: 'pjpg' }}" data-widths="[500, 800, 1260]" data-sizes="auto" alt="" class="hgg-item-img" alt="{{ block.settings.alt_row_2_promos_2 }}">
+                        {%- if block.settings.row_2_promos_link_2 != blank -%}</a>{% endif %}
+                		<div class="hgg-item-content">
+                          <h2>{{ block.settings.row_2_promos_hdr_text_2 }}</h2>
+                          <a href="{{ block.settings.row_2_promos_link_2 }}" class="btn">{{ block.settings.row_2_promos_link_text_2 }}</a>
+                        </div>
+                      </div>
+                  
+                {% endif %}
+                
+              </div>
+            </div>
+          </div>
+      
+      
+      
+      {% when 'row-1-promo' %}
+          <div class="holiday-gift-guide-row-3 flex-grid">
+            <div class="hgg-col-1">
+              {% if block.settings.img_row_3_promo != blank %}
+              
+                <div class="hgg-item">
+                  {%- if block.settings.row_3_promo_link != blank -%}<a href="{{ block.settings.row_3_promo_link }}" class="hgg-wrap-link">{% endif %}
+                    <img src="{{ block.settings.img_row_3_promo | img_url: '1600x', format: 'pjpg' }}" data-widths="[500, 800, 1260]" data-sizes="auto" alt="" class="hgg-item-img" alt="{{ block.settings.alt_row_3_promo }}">
+                  {%- if block.settings.row_3_promo_link != blank -%}</a>{% endif %}
+                  <div class="hgg-item-content">
+                    <h2>{{ block.settings.row_3_promo_hdr_text }}</h2>
+                    <a href="{{ block.settings.row_3_promo_link }}" class="btn">{{ block.settings.row_3_promos_link_text }}</a>
+                  </div>
+                </div>
+              
+              {% endif %}
+                
+            </div>
+          </div>
+      
+      
+      {% endcase %}
+      
+    </div>
+  {% endfor %}
+</div>
+
+
+{% schema %}
+  {
+    "name": "Page.sections page",
+	"max_blocks": 6,
+    "settings": [
+      {
+        "type": "checkbox",
+        "id": "page_title_enable",
+        "label": "Show page title"
+      },
+      {
+        "type": "checkbox",
+        "id": "page_content_enable",
+        "label": "Show page content"
+      }
+	],
+	"blocks": [
+      {
+        "type": "row-5-promos",
+        "name": "Row with 5 Promos",
+        "settings": [
+          {
+            "type": "image_picker",
+            "id": "img_row_5_promos_1",
+            "label": "1st wide image"
+          },
+          {
+            "type": "text",
+            "id": "alt_row_5_promos_1",
+            "label": "Alt text - 1st wide image",
+			"default": "FAO Schwarz Space Explorer"
+          },
+          {
+            "type": "text",
+            "id": "row_5_promos_hdr_text_1",
+            "label": "1st wide header",
+			"default": "Space Explorer"
+          },
+          {
+            "type": "url",
+            "id": "row_5_promos_link_1",
+            "label": "1st wide button link"
+          },
+          {
+            "type": "text",
+            "id": "row_5_promos_link_text_1",
+            "label": "1st wide button text",
+            "default": "Shop Space"
+          },
+		  {
+            "type": "image_picker",
+            "id": "img_row_5_promos_2",
+            "label": "2nd wide image"
+          },
+          {
+            "type": "text",
+            "id": "alt_row_5_promos_2",
+            "label": "Alt text - 2nd wide image",
+			"default": "FAO Schwarz Fast Lane"
+          },
+          {
+            "type": "text",
+            "id": "row_5_promos_hdr_text_2",
+            "label": "2nd wide header",
+			"default": "Fast Lane"
+          },
+          {
+            "type": "url",
+            "id": "row_5_promos_link_2",
+            "label": "2nd wide button link"
+          },
+          {
+            "type": "text",
+            "id": "row_5_promos_link_text_2",
+            "label": "2nd wide button text",
+            "default": "Shop Vehicles"
+          },
+		  {
+            "type": "image_picker",
+            "id": "img_row_5_promos_3",
+            "label": "1st narrow image"
+          },
+          {
+            "type": "text",
+            "id": "alt_row_5_promos_3",
+            "label": "Alt text - 1st narrow image",
+			"default": "FAO Schwarz Future Foodie"
+          },
+          {
+            "type": "text",
+            "id": "row_5_promos_hdr_text_3",
+            "label": "1st narrow header",
+			"default": "Future Foodie"
+          },
+          {
+            "type": "url",
+            "id": "row_5_promos_link_3",
+            "label": "1st narrow button link"
+          },
+          {
+            "type": "text",
+            "id": "row_5_promos_link_text_3",
+            "label": "1st narrow button text",
+            "default": "Shop Chef"
+          },
+		  {
+            "type": "image_picker",
+            "id": "img_row_5_promos_4",
+            "label": "2nd narrow image"
+          },
+          {
+            "type": "text",
+            "id": "alt_row_5_promos_4",
+            "label": "Alt text - 2nd narrow image",
+			"default": "FAO Schwarz Imagination Station"
+          },
+          {
+            "type": "text",
+            "id": "row_5_promos_hdr_text_4",
+            "label": "2nd narrow header",
+			"default": "Imagination Station"
+          },
+          {
+            "type": "url",
+            "id": "row_5_promos_link_4",
+            "label": "2nd narrow button link"
+          },
+          {
+            "type": "text",
+            "id": "row_5_promos_link_text_4",
+            "label": "2nd narrow button text",
+            "default": "Shop Imagination"
+          },
+		  {
+            "type": "image_picker",
+            "id": "img_row_5_promos_5",
+            "label": "3rd narrow image"
+          },
+          {
+            "type": "text",
+            "id": "alt_row_5_promos_5",
+            "label": "Alt text - 3rd narrow image",
+			"default": "FAO Schwarz STEM"
+          },
+          {
+            "type": "text",
+            "id": "row_5_promos_hdr_text_5",
+            "label": "3rd narrow header",
+			"default": "STEM"
+          },
+          {
+            "type": "url",
+            "id": "row_5_promos_link_5",
+            "label": "3rd narrow button link"
+          },
+          {
+            "type": "text",
+            "id": "row_5_promos_link_text_5",
+            "label": "3rd narrow button text",
+            "default": "Shop STEM"
+          }
+        ]
+      },
+	  {
+        "type": "row-2-promos",
+        "name": "Row with 2 Promos",
+        "settings": [
+          {
+            "type": "image_picker",
+            "id": "img_row_2_promos_1",
+            "label": "1st image"
+          },
+          {
+            "type": "text",
+            "id": "alt_row_2_promos_1",
+            "label": "Alt text - 1st image",
+			"default": "FAO Schwarz Creative Zone"
+          },
+          {
+            "type": "text",
+            "id": "row_2_promos_hdr_text_1",
+            "label": "1st header",
+			"default": "Creative Zone"
+          },
+          {
+            "type": "url",
+            "id": "row_2_promos_link_1",
+            "label": "1st button link"
+          },
+          {
+            "type": "text",
+            "id": "row_2_promos_link_text_1",
+            "label": "1st button text",
+            "default": "Shop Creativity"
+          },
+		  {
+            "type": "image_picker",
+            "id": "img_row_2_promos_2",
+            "label": "2nd image"
+          },
+          {
+            "type": "text",
+            "id": "alt_row_2_promos_2",
+            "label": "Alt text - 2nd image",
+			"default": "FAO Schwarz Music Master"
+          },
+          {
+            "type": "text",
+            "id": "row_2_promos_hdr_text_2",
+            "label": "2nd header",
+			"default": "Music Master"
+          },
+          {
+            "type": "url",
+            "id": "row_2_promos_link_2",
+            "label": "2nd button link"
+          },
+          {
+            "type": "text",
+            "id": "row_2_promos_link_text_2",
+            "label": "2nd button text",
+            "default": "Shop Music"
+          }
+        ]
+      },
+	  {
+        "type": "row-1-promo",
+        "name": "Row with 1 Promo",
+        "settings": [
+          {
+            "type": "image_picker",
+            "id": "img_row_3_promo",
+            "label": "Wide image"
+          },
+          {
+            "type": "text",
+            "id": "alt_row_3_promo",
+            "label": "Alt text - wide image",
+			"default": "FAO Schwarz Plush Toys"
+          },
+          {
+            "type": "text",
+            "id": "row_3_promo_hdr_text",
+            "label": "1st header",
+			"default": "Soft & Cuddly"
+          },
+          {
+            "type": "url",
+            "id": "row_3_promo_link",
+            "label": "button link"
+          },
+          {
+            "type": "text",
+            "id": "row_3_promos_link_text",
+            "label": "button text",
+            "default": "Shop Plush Toys"
+          }
+        ]
+      }
+    ]
+  }
+{% endschema %}

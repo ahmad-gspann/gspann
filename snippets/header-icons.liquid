@@ -1,0 +1,98 @@
+{% if settings.enable_currencies and section.settings.toolbar_currencies == false %}
+  {% include 'currency-picker', picker_id: 'header', currency_class: 'small--hide' %}
+{% endif %}
+
+<div class="site-nav">
+  <div class="site-nav__icons">
+
+
+     <a class="site-nav__link site-nav__link--icon small--hide" href="/pages/stores"> 
+      <img class="site-nav__link--icon building icon" src="https://cdn.shopify.com/s/files/1/2284/6393/files/building.svg?17508937588684436497"/>
+	</a>
+    
+    {% capture the_snippet_auth %}{% include 'socialshopwave-widget-auth' %}{% endcapture %}
+    {% if the_snippet_auth contains 'Liquid error' %}
+    
+    {% if shop.customer_accounts_enabled %}
+    <a class="site-nav__link icon-building site-nav__link--icon small--hide" href="/account">
+      {% include 'icon-user' %}
+      <span class="icon__fallback-text">
+        {% if customer %}
+        {{ 'layout.customer.account' | t }}
+        {% else %}
+        {{ 'layout.customer.log_in' | t }}
+        {% endif %}
+      </span>
+    </a>
+    {% endif %}
+
+    {% else %}
+
+
+
+    <div id="ssw-topauth" class="ssw-topauth site-nav__link site-nav__link--icon small--hide">
+      {% if customer %}
+      <div class="ssw-tprofile ssw-dropdown">
+        <a class="ssw-dropdown-toggle" data-toggle="ssw-dropdown" href="javascript:void(0);">
+           {% include 'icon-user' %}
+      <span class="icon__fallback-text">
+        {% if customer %}
+        {{ 'layout.customer.account' | t }}
+        {% else %}
+        {{ 'layout.customer.log_in' | t }}
+        {% endif %}
+      </span>
+        </a>
+        <ul class="ssw-dropdown-menu" role="menu" aria-labelledby="dLabel">
+          <li id="customer_myorders_li"><a tabindex="-1" href="/account">{{ 'socialshopwave.my_orders' | t }}</a></li>
+          {% include 'ssw-widget-dropdown' %}
+          <li class="ssw-divider"></li>
+          <li><a id="customer_logout_link" tabindex="-1" href="/account/logout">{{ 'socialshopwave.logout' | t }}</a></li>
+        </ul>
+      </div>
+      {% else %}
+      <a id="customer_login_link" href="javascript:void(0);" data-toggle="ssw-modal" data-target="#login_modal" onclick="trackShopStats('login_popup_view', 'all')">
+       {% include 'icon-user' %}
+      <span class="icon__fallback-text">
+        {% if customer %}
+        {{ 'layout.customer.account' | t }}
+        {% else %}
+        {{ 'layout.customer.log_in' | t }}
+        {% endif %}
+      </span>
+      </a>
+      
+      {% endif %}
+    </div>
+
+
+
+
+    {% endif %}
+    
+    {% if section.settings.header_search_enable %}
+      <a href="/search" class="site-nav__link site-nav__link--icon js-search-header js-no-transition{% if section.settings.main_menu_alignment == 'center' or section.settings.main_menu_alignment == 'center-split' %} medium-up--hide{% endif %}">
+        {% include 'icon-search' %}
+        <span class="icon__fallback-text">{{ 'general.search.title' | t }}</span>
+      </a>
+    {% endif %}
+
+    {% if section.settings.main_menu_alignment == 'left' or section.settings.main_menu_alignment == 'left-center' or section.settings.main_menu_alignment == 'left-drawer' %}
+      <button
+        type="button"
+        class="site-nav__link site-nav__link--icon js-drawer-open-nav{% if section.settings.main_menu_alignment == 'left' or section.settings.main_menu_alignment == 'left-center' %} medium-up--hide{% endif %}"
+        aria-controls="NavDrawer">
+        {% include 'icon-hamburger' %}
+        <span class="icon__fallback-text">{{ 'general.drawers.navigation' | t }}</span>
+      </button>
+    {% endif %}
+
+    <a href="/cart" class="site-nav__link site-nav__link--icon js-drawer-open-cart js-no-transition" aria-controls="CartDrawer">
+      <span class="cart-link">
+        {% include 'icon-bag' %}
+        <span class="icon__fallback-text">{{ 'layout.cart.title' | t }}</span>
+        <span class="cart-count">{{ cart.item_count }}</span>
+      </span>
+    </a>
+  </div>
+</div>

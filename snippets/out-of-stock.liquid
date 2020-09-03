@@ -1,0 +1,48 @@
+<div class="product__notify-available">
+    {% if shop.customer_accounts_enabled %}
+        {% if customer %}
+            <a href="#" class="product__email-customer-btn btn btn--gray">
+                <span>EMAIL WHEN AVAILABLE</span>
+            </a>
+        {% else %}
+            <div class="product__guest-notify-form">
+                {% comment %}
+                <a href="#" class="product__notify-close-btn">
+                    <img src="{{ 'cancel-icon.svg' | asset_url }}">
+                </a>
+                {% endcomment %}
+                <p class="product__notify-form-title">
+                     GET NOTIFIED WHEN THIS ITEM IS BACK IN STOCK!
+                </p>
+                <p class="product__notify-form-description">
+                    Enter your email address to be notified.  We’ll send you a 1-time email when this product is available again!
+                </p>
+                <div class="product__notify-form-container">
+                    <form action="">
+                      <div id="form-msg"></div>
+                        <input type="email" placeholder="Email *" class="product__notify-email" id="notify_email">
+                        
+                        <button type="submit" class="product__notify-btn btn btn--red" id="notify_button">
+                            <span>EMAIL WHEN AVAILABLE</span>
+                        </button>
+                    </form>
+                    <form id="email_signup" class="klaviyo_styling klaviyo_standard_embed_PuBT9r" data-ajax-submit="//manage.kmail-lists.com/ajax/subscriptions/subscribe" method="GET" novalidate="novalidate">
+                        <input type="hidden" name="g" value="PuBT9r">
+                        <div class="klaviyo_field_group">
+                            <label for="k_id_email" style="display:none;">Newsletter Sign Up</label>
+                            <input type="email" value="" name="email" id="k_id_email" placeholder="Your email" style="display:none;"/>
+                        </div>
+                        <div class="klaviyo_form_actions" style="display:none;">
+                            <button type="submit" class="klaviyo_submit_button">Subscribe</button>
+                        </div>
+                        <input id="product__check-mailing" class="product__check-mailing" type="checkbox" value="1">
+                        <label for="product__check-mailing" class="product__custom-mailing-checkbox">ADD ME TO THE FAO MAILING LIST!</label>
+                        <div class="klaviyo_messages">
+                            <div class="success_message"></div>
+                            <div class="error_message"></div>
+                        </div>
+                    </form>
+                </div>
+        {% endif %}
+    {% endif %}
+</div>

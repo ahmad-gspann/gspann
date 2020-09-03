@@ -1,0 +1,79 @@
+<style>
+  .product-single__media video {
+    width: inherit;
+  }
+</style>
+
+{%- assign featured_image = current_variant.featured_image | default: product.featured_image -%}
+
+{% unless product.empty? %}
+  <div class="product__photos product__photos-{{ section_id }} product__photos--{{ thumbnail_position }}">
+    <div class="product__main-photos" data-aos>
+      <div id="ProductPhotos-{{ section_id }}">
+        <div>{{product.media}}</div>
+        {% for media in product.media %}
+          {% render 'plus-rich-media', media: media, featured_image: featured_image %}
+        {% endfor %}
+      </div>
+    </div>
+
+    <div
+      id="ProductThumbs-{{ section_id }}"
+      class="product__thumbs product__thumbs--{{ thumbnail_position }} {% if product.images.size == 1 %} medium-up--hide{% endif %} small--hide"
+      data-position="{{ thumbnail_position }}"
+      data-aos>
+      {% if product.media.size > 1 %}
+        {% for media in product.media %}
+          {%- assign image = media -%}
+          {%- assign image_alt = image.alt -%}
+
+          <div class="product__thumb-item"
+            data-index="{{ forloop.index0 }}">
+            <div class="image-wrap" style="height: 0; padding-bottom: {{ 100 | divided_by: image.aspect_ratio }}%;">
+              <div
+                class="product__thumb product__thumb-{{ section_id }} js-no-transition"
+                data-id="{{ image.id }}"
+                {% if settings.product_zoom_enable %}data-zoom="{{ image.src | img_url: product_zoom_size }}"{% endif %}
+                >
+
+                {% if media.media_type == 'video' %}
+                  <span class="product__thumb-play">
+                    {% render 'icon-play' %}
+                  </span>
+                {% endif %}
+
+                {%- assign img_url = image | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
+                <img class="animation-delay-{{ forloop.index | times: 3 }} lazyload"
+                    data-src="{{ img_url }}"
+                    data-widths="[360, 540, 720, 900, 1080]"
+                    data-aspectratio="{{ image.aspect_ratio }}"
+                    data-sizes="auto"
+                    alt="{{ image_alt | escape }}">
+                <noscript>
+                  <img class="lazyloaded" src="{{ image | img_url: product_thumb_size }}" alt="{{ image_alt | escape }}">
+                </noscript>
+              </div>
+            </div>
+          </div>
+        {% endfor %}
+      {% endif %}
+    </div>
+  </div>
+{% else %}
+  <div class="product__photos product__photos-{{ section_id }}">
+    <div class="product__main-photos" style="width: 100%">
+      <div id="ProductPhotos-{{ section_id }}">
+        <div data-index="{{ forloop.index0 }}">
+          <a href="#">
+            {{ 'product-1' | placeholder_svg_tag: 'placeholder-svg' }}
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endunless %}
+
+<script>
+  // Click to play
+  $('.product-single__media video').click(function () { this.paused ? this.play() : this.pause() });
+</script>

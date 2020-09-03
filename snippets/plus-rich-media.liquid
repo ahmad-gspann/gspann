@@ -1,0 +1,60 @@
+{% case media.media_type %}
+  {% when 'image' %}
+    {%- assign image = media -%}
+    {%- assign is_featured = false -%}
+    {% if featured_image == image %}
+      {%- assign is_featured = true -%}
+    {% endif %}
+    {%- assign image_alt = image.alt -%}
+    <div class="{% if is_featured %}starting-slide{% else %}secondary-slide{% endif %}" data-index="{{ forloop.index0 }}">
+      <div class="product-image-main product-image-main--{{ section_id }}">
+        <div class="image-wrap
+          {% if has_product_video and video_type == 'youtube' %} hide{% endif %}
+          {% if has_product_video and video_type == 'vimeo' %} hide{% endif %}
+          {% if has_product_video and video_type == 'mp4' %} hide{% endif %}" >
+          <div class="photo-zoom-link {% if settings.product_zoom_enable %}photo-zoom-link--enable{% endif %}" data-zoom-size="{{ image | img_url: product_zoom_size }}">
+            {%- assign img_url = image | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
+
+            {% if is_featured %}
+              <img class="photo-zoom-link__initial lazyload"
+                  data-src="{{ img_url }}"
+                  data-widths="[360, 540, 720, 900, 1080]"
+                  data-aspectratio="{{ image.aspect_ratio }}"
+                  data-sizes="auto"
+                  alt="{{ image_alt | escape }}">
+              <noscript>
+                <img class="photo-zoom-link__initial lazyloaded" src="{{ image | img_url: product_image_size }}" alt="{{ image_alt | escape }}">
+              </noscript>
+            {% else %}
+              <img class="lazyload"
+                  data-src="{{ img_url }}"
+                  data-widths="[360, 540, 720, 900, 1080]"
+                  data-aspectratio="{{ image.aspect_ratio }}"
+                  data-sizes="auto"
+                  alt="{{ image_alt | escape }}">
+              <noscript>
+                <img class="lazyloaded" src="{{ image | img_url: product_image_size }}" alt="{{ image_alt | escape }}">
+              </noscript>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+    </div>
+  {% when 'external_video' %}
+    <div class="product-single__media" style="padding-top: {{ 1 | divided_by: media.aspect_ratio | times: 100}}%;" data-media-id="{{ media.id }}">
+      {{ media | external_video_tag }}
+    </div>
+  {% when 'video' %}
+    <div class="product-single__media" data-media-id="{{ media.id }}">
+      {{ media | video_tag: controls: true, image_size: "1024x" }}
+    </div>
+  {% when 'model' %}
+    <div class="product-single__media" style="padding-top: 100%" data-media-id="{{ media.id }}">
+      {{ media | model_viewer_tag }}
+    </div>
+    <button class="active">play</button>
+  {% else %}
+    <div class="product-single__media" style="padding-top: 100%;" data-media-id="{{ media.id }}">
+      {{ media | media_tag }}
+    </div>
+{% endcase %}
